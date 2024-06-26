@@ -1,0 +1,28 @@
+<form #myszkiForm="ngForm" (ngSubmit)="onSubmit($event)">
+    <div>
+        <label for="model">Model</label>
+        <input 
+            type="text" 
+            id="model" 
+            name="model" 
+            [(ngModel)]="object.model" 
+            required/>
+    </div>
+    <div>
+        <label for="dpi">DPI</label>
+        <input 
+            type="number" 
+            id="dpi" 
+            name="dpi" 
+            [(ngModel)]="object.dpi" 
+            required/>
+    </div>
+
+    <input type="button" name="cancel" id="cancel" value="Anuluj dodawanie myszki" (click)="cancel.emit()"/>
+    <input 
+        type="submit" 
+        name="submit" 
+        id="submit" 
+        value="Zapisz" 
+        [disabled]="myszkiForm.invalid"/>
+</form>

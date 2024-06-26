@@ -1,0 +1,38 @@
+<p>myszki works!</p>
+
+<button (click)="onDataStyleChange()">
+    {{isTableView ? 'JSON' : 'Tabelka'}}
+</button>
+
+
+<ng-container *ngIf="!isTableView">
+    <div *ngFor="let s of data" (click)="choosedMysz = s" class="selectable">
+        {{s | json}}
+    </div>
+</ng-container>
+
+
+<table  border="1">
+    <thead>
+        <tr>
+            <th>Model</th>
+            <th>DPI</th>
+            <th>cos</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr 
+            *ngFor="let s of data" 
+            [app-myszki-row]="s"
+            (choosed)="onChoosedRow($event)"
+           >
+        </tr>
+    </tbody>
+</table>
+<br/>
+<div *ngIf="choosedMysz">
+    Wybrana mysz to: {{choosedMysz.model}}
+
+</div>
+
+ <!--(choosed)="onChoosedRow($event)"--> 
